@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.itqf.dao.FunctionDao">
+
+    <insert id="insertFunctionWithGroup" parameterType="Functionwithgroup" >
+        insert into functionwithgroup
+        (function_id,group_id)
+        value
+        (#{functionId},#{groupId})
+    </insert>
+
+
+    <select id="findFunction" resultType="function" parameterType="string" >
+            select f.id id , f.page_name pageName , f.page_function pageFunction from userwithgroup uwg left join usergroup ug on uwg.group_id = ug.id
+            left join functionwithgroup fwg on ug.id = fwg.group_id left join function_ f on fwg.function_id = f.id
+            where uwg.user_id = #{loginId}
+    </select>
+
+    <select id="findAllFunctoin" resultType="function">
+        select * from function_
+    </select>
+
+    <select id="findFunctionByGroupId" parameterType="int" resultType="function">
+        select f.* from function_ f left join functionwithgroup fg on f.id = fg.function_id where fg.group_id = #{groupId}
+    </select>
+
+    <select id="findByFunctionIdAndGroupId" parameterType="int" resultType="Functionwithgroup">
+        select * from functionwithgroup where function_id = #{functionid} and group_id=#{groupId}
+    </select>
+
+
+</mapper>

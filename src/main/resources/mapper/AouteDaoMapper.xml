@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.itqf.dao.RouteDao">
+
+    <insert id="insertCityexpand" parameterType="Cityexpand">
+        insert into cityexpand (city_id , range_city) value (#{cityId},#{rangeCity})
+    </insert>
+
+    <insert id="insertRouteinfo" parameterType="Routeinfo">
+        insert into routeinfo
+        (<trim suffixOverrides=",">
+        <if test="distance!=null">distince,</if>
+        <if test="endStation!=null">end_station,</if>
+        <if test="fetchTime!=null">fetch_time,</if>
+        <if test="passStation!=null">pass_station,</if>
+        <if test="startStation!=null">start_station,</if>
+    </trim>
+        ) values (
+        <trim suffixOverrides=",">
+            <if test="distance!=null">#{distince},</if>
+            <if test="endStation!=null">#{endStation},</if>
+            <if test="fetchTime!=null">#{fetchTime},</if>
+            <if test="passStation!=null">#{passStation},</if>
+            <if test="startStation!=null">#{startStation},</if>
+        </trim>
+        );
+    </insert>
+
+
+    <delete id="deleteRegions" parameterType="int" >
+        delete from cityexpand where id = #{id}
+    </delete>
+
+    <update id="updateCityexpand" parameterType="Cityexpand" >
+        update cityexpand set city_id = #{cityId} ,range_city=#{rangeCity} where id = #{id}
+    </update>
+
+    <select id="findAllRegions" resultType="Region" >
+        select * from region
+    </select>
+    <select id="findLeftRegions" resultType="Region" >
+         select * from region r left join cityexpad e where r.id != e.city_id
+    </select>
+
+    <select id="findAllExpands" resultType="Cityexpand" >
+        select * from cityexpand
+    </select>
+
+    <select id="findAll" resultType="Routeinfo" >
+        select * from routeinfo
+    </select>
+    <select id="findExpand" resultType="Cityexpand" parameterType="int">
+        select * from cityexpand where id = #{id}
+    </select>
+    <select id="findRegionByCity" parameterType="string" resultType="Region">
+        select * from region where city = #{city}
+    </select>
+    <select id="findRegionById" parameterType="int" resultType="Region">
+        select * from region where id = #{id}
+    </select>
+
+    <select id="findRouteInfoByStartStationAndEndStation" parameterType="map" resultType="Routeinfo">
+        select * from  routeinfo where start_station = #{startStation} and end_station =#{endStation}
+    </select>
+
+</mapper>

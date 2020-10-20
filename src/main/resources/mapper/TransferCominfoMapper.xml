@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.itqf.dao.TransferComInfoDao">
+    <insert id="addTransferconinfo" parameterType="com.itqf.entity.Transfercominfo">
+        insert into transfercominfo(
+        <trim suffixOverrides=",">
+            <if test="id!=null">id,</if>
+            <if test="city!=null">city,</if>
+            <if test="companyName!=null">company_name,</if>
+            <if test="detailAddress!=null">detail_address,</if>
+            <if test="linkPhone!=null">link_phone,</if>
+        </trim>
+        )values(
+        <trim suffixOverrides=",">
+            <if test="id!=null">#{id},</if>
+            <if test="city!=null">#{city},</if>
+            <if test="companyName!=null">#{companyName},</if>
+            <if test="detailAddress!=null">#{detailAddress},</if>
+            <if test="linkPhone!=null">#{linkPhone},</if>
+        </trim>
+        )
+    </insert>
+
+    <select id="findByPage" resultType="com.itqf.entity.Transfercominfo">
+        select * from transfercominfo
+    </select>
+
+    <select id="findById" parameterType="string" resultType="com.itqf.entity.Transfercominfo">
+        select * from transfercominfo where id = #{id};
+    </select>
+</mapper>

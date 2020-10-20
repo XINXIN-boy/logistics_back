@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.itqf.dao.BillDao">
+
+    <insert id="insertBillinfo" parameterType="Billinfo">
+        insert into billinfo (
+        <trim suffixOverrides=",">
+            <if test="id!=null">id,</if>
+            <if test="acceptStation!=null">accept_station,</if>
+            <if test="billCode!=null">bill_code,</if>
+            <if test="billState!=null">bill_state,</if>
+            <if test="billType!=null">bill_type,</if>
+        </trim>
+        ) values (
+        <trim suffixOverrides=",">
+            <if test="id!=null">#{id},</if>
+            <if test="acceptStation!=null">#{acceptStation},</if>
+            <if test="billCode!=null">#{billCode},</if>
+            <if test="billState!=null">#{billState},</if>
+            <if test="billType!=null">#{billType},</if>
+        </trim>
+        );
+    </insert>
+
+    <insert id="insertRelease"  parameterType="Billrelease">
+        insert into billrelease (
+        <trim suffixOverrides=",">
+            <if test="id!=null">id,</if>
+            <if test="acceptStation!=null">accept_station,</if>
+            <if test="billCode!=null">bill_code,</if>
+            <if test="billType!=null">bill_type,</if>
+            <if test="receiveBillPerson!=null">receive_bill_person,</if>
+            <if test="receiveBillTime!=null">receive_bill_time,</if>
+            <if test="releasePerson!=null">release_person,</if>
+        </trim>
+        ) values (
+        <trim suffixOverrides=",">
+            <if test="id!=null">#{id},</if>
+            <if test="acceptStation!=null">#{acceptStation},</if>
+            <if test="billCode!=null">#{billCode},</if>
+            <if test="billType!=null">#{billType},</if>
+            <if test="receiveBillPerson!=null">#{receiveBillPerson},</if>
+            <if test="receiveBillTime!=null">#{receiveBillTime},</if>
+            <if test="releasePerson!=null">#{releasePerson},</if>
+        </trim>
+        );
+    </insert>
+    
+    <update id="updateBillInfo" parameterType="Billinfo" >
+        update billinfo
+        <set>
+            <if test="acceptStation!=null">
+                accept_station = #{acceptStation},
+            </if>
+            <if test="billCode!=null">
+                bill_code = #{billCode},
+            </if>
+            <if test="billState!=null">
+                bill_state = #{billState}
+            </if>
+            <if test="billType!=null">
+                bill_type = #{billType}
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+
+    <select id="findAll" resultType="Billinfo" >
+        select * from billinfo
+    </select>
+    <select id="findNotRelease" resultType="Billinfo">
+       select bi.* from goodsbillevent gb left join billinfo bi on gb.goods_bill_id = bi.bill_code where gb.event_name= '待发'
+    </select>
+    <select id="findBillInfoByBillCode" resultType="Billinfo" parameterType="string">
+        select * from billinfo where bill_code = #{billCode}
+    </select>
+</mapper>

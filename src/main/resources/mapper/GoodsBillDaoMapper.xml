@@ -1,0 +1,293 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.itqf.dao.GoodsBillDao">
+
+    <insert id="addGoodsBill" parameterType="Goodsbill" >
+        insert into goodsbill (
+        <trim suffixOverrides=",">
+            <if test="goodsBillCode!=null">goods_bill_code,</if>
+            <if test="acceptProcedureRate!=null">accept_procedure_rate,</if>
+            <if test="acceptStation!=null">accept_station,</if>
+            <if test="carriage!=null">carriage,</if>
+            <if test="carryGoodsFee!=null">carry_goods_fee,</if>
+            <if test="employeeCode!=null">employee_code,</if>
+            <if test="factDealDate!=null">fact_deal_date,</if>
+            <if test="fetchGoodsMode!=null">fetch_goods_mode,</if>
+            <if test="helpAcceptPayment!=null">help_accept_payment,</if>
+            <if test="ifAudit!=null">if_audit,</if>
+            <if test="ifSettleAccounts!=null">if_settle_accounts,</if>
+            <if test="insurance!=null">insurance,</if>
+            <if test="moneyOfChangePay!=null">money_of_change_pay,</if>
+            <if test="payKickback!=null">pay_kickback,</if>
+            <if test="payMode!=null">pay_mode,</if>
+            <if test="predeliveryDate!=null">predelivery_date,</if>
+            <if test="receiveGoodsAddr!=null">receive_goods_addr,</if>
+            <if test="receiveGoodsCustomer!=null">receive_goods_customer,</if>
+            <if test="receiveGoodsCustomerAddr!=null">receive_goods_customer_addr,</if>
+            <if test="receiveGoodsCustomerCode!=null">receive_goods_customer_code,</if>
+            <if test="receiveGoodsCustomerTel!=null">receive_goods_customer_tel,</if>
+            <if test="reduceFund!=null">reduce_fund,</if>
+            <if test="remark!=null">remark,</if>
+            <if test="sendGoodsAddr!=null">send_goods_addr,</if>
+            <if test="sendGoodsCustomer!=null">send_goods_customer,</if>
+            <if test="sendGoodsCustomerAddr!=null">send_goods_customer_addr,</if>
+            <if test="sendGoodsCustomerNo!=null">send_goods_customer_no,</if>
+            <if test="sendGoodsCustomerTel!=null">send_goods_customer_tel,</if>
+            <if test="sendGoodsDate!=null">send_goods_date,</if>
+            <if test="transferFee!=null">transfer_fee,</if>
+            <if test="transferStation!=null">transfer_station,</if>
+            <if test="validity!=null">validity,</if>
+            <if test="writeBillPerson!=null">write_bill_person,</if>
+            <if test="writeDate!=null">write_date</if>
+        </trim>
+        ) values (
+        <trim suffixOverrides=",">
+            <if test="goodsBillCode!=null">#{goodsBillCode},</if>
+            <if test="acceptProcedureRate!=null">#{acceptProcedureRate},</if>
+            <if test="acceptStation!=null">#{acceptStation},</if>
+            <if test="carriage!=null">#{carriage},</if>
+            <if test="carryGoodsFee!=null">#{carryGoodsFee},</if>
+            <if test="employeeCode!=null">#{employeeCode},</if>
+            <if test="factDealDate!=null">#{factDealDate},</if>
+            <if test="fetchGoodsMode!=null">#{fetchGoodsMode},</if>
+            <if test="helpAcceptPayment!=null">#{helpAcceptPayment},</if>
+            <if test="ifAudit!=null">#{ifAudit},</if>
+            <if test="ifSettleAccounts!=null">#{ifSettleAccounts},</if>
+            <if test="insurance!=null">#{insurance},</if>
+            <if test="moneyOfChangePay!=null">#{moneyOfChangePay},</if>
+            <if test="payKickback!=null">#{payKickback},</if>
+            <if test="payMode!=null">#{payMode},</if>
+            <if test="predeliveryDate!=null">#{predeliveryDate},</if>
+            <if test="receiveGoodsAddr!=null">#{receiveGoodsAddr},</if>
+            <if test="receiveGoodsCustomer!=null">#{receiveGoodsCustomer},</if>
+            <if test="receiveGoodsCustomerAddr!=null">#{receiveGoodsCustomerAddr},</if>
+            <if test="receiveGoodsCustomerCode!=null">#{receiveGoodsCustomerCode},</if>
+            <if test="receiveGoodsCustomerTel!=null">#{receiveGoodsCustomerTel},</if>
+            <if test="reduceFund!=null">#{reduceFund},</if>
+            <if test="remark!=null">#{remark},</if>
+            <if test="sendGoodsAddr!=null">#{sendGoodsAddr},</if>
+            <if test="sendGoodsCustomer!=null">#{sendGoodsCustomer},</if>
+            <if test="sendGoodsCustomerAddr!=null">#{sendGoodsCustomerAddr},</if>
+            <if test="sendGoodsCustomerNo!=null">#{sendGoodsCustomerNo},</if>
+            <if test="sendGoodsCustomerTel!=null">#{sendGoodsCustomerTel},</if>
+            <if test="sendGoodsDate!=null">#{sendGoodsDate},</if>
+            <if test="transferFee!=null">#{transferFee},</if>
+            <if test="transferStation!=null">#{transferStation},</if>
+            <if test="validity!=null">#{validity},</if>
+            <if test="writeBillPerson!=null">#{writeBillPerson},</if>
+            <if test="writeDate!=null">#{writeDate}</if>
+        </trim>
+        );
+    </insert>
+
+    <insert id="addGoods" parameterType="Cargoreceiptdetail" >
+        insert into cargoreceiptdetail (
+        <trim suffixOverrides=",">
+            <if test="goodsRevertBillId!=null">goods_revert_bill_id,</if>
+            <if test="goodsBillDetailId!=null">goods_bill_detail_id,</if>
+            <if test="goodsValue!=null">goods_value,</if>
+            <if test="pieceAmount!=null">piece_amount,</if>
+            <if test="priceMode!=null">price_mode,</if>
+            <if test="priceStandard!=null">price_standard,</if>
+            <if test="volume!=null">volume,</if>
+            <if test="weight!=null">weight</if>
+        </trim>
+        ) values (
+        <trim suffixOverrides=",">
+            <if test="goodsRevertBillId!=null">#{goodsRevertBillId},</if>
+            <if test="goodsBillDetailId!=null">#{goodsBillDetailId},</if>
+            <if test="goodsValue!=null">#{goodsValue},</if>
+            <if test="pieceAmount!=null">#{pieceAmount},</if>
+            <if test="priceMode!=null">#{priceMode},</if>
+            <if test="priceStandard!=null">#{priceStandard},</if>
+            <if test="volume!=null">#{volume},</if>
+            <if test="weight!=null">#{weight}</if>
+        </trim>
+        );
+    </insert>
+
+    <insert id="insertGoodsbillevent" parameterType="Goodsbillevent">
+        insert into goodsbillevent (
+        <trim suffixOverrides=",">
+            <if test="goodsBillId!=null">goods_bill_id,</if>
+            <if test="eventName!=null">event_name,</if>
+            <if test="remark!=null">remark</if>
+        </trim>
+        ) values (
+        <trim suffixOverrides=",">
+            <if test="goodsBillId!=null">#{goodsBillId},</if>
+            <if test="eventName!=null">#{eventName},</if>
+            <if test="remark!=null">#{remark}</if>
+        </trim>
+        );
+    </insert>
+
+    <update id="updateGoodsbillevent" parameterType="Goodsbillevent" >
+        update goodsbillevent
+        <set>
+            <if test="eventName!=null">
+                event_name = #{eventName},
+            </if>
+            <if test="occurTime!=null">
+                occur_time = #{occurTime},
+            </if>
+            <if test="remark!=null">
+                remark = #{remark}
+            </if>
+        </set>
+        where goods_bill_id = #{goodsBillId}
+    </update>
+
+    <update id="updateGoodsBill" parameterType="Goodsbill">
+        update goodsbill
+        <!-- <set>相当于sql语句中的set，会忽略最后的"," -->
+        <set>
+            <if test="acceptProcedureRate!=null">
+                accept_procedure_rate = #{acceptProcedureRate},
+            </if>
+            <if test="acceptStation!=null">
+                accept_station = #{acceptStation},
+            </if>
+            <if test="carriage!=null">
+                carriage = #{carriage},
+            </if>
+            <if test="carryGoodsFee!=null">
+                carry_goods_fee = #{carryGoodsFee},
+            </if>
+            <if test="employeeCode!=null">
+                employee_code = #{employeeCode},
+            </if>
+            <if test="factDealDate!=null">
+                fact_deal_date = #{factDealDate},
+            </if>
+            <if test="fetchGoodsMode!=null">
+                fetch_goods_mode = #{fetchGoodsMode},
+            </if>
+            <if test="helpAcceptPayment!=null">
+                help_accept_payment = #{helpAcceptPayment},
+            </if>
+            <if test="ifAudit!=null">
+                if_audit = #{ifAudit},
+            </if>
+            <if test="ifSettleAccounts!=null">
+                if_settle_accounts = #{ifSettleAccounts},
+            </if>
+            <if test="insurance!=null">
+                insurance = #{insurance},
+            </if>
+            <if test="moneyOfChangePay!=null">
+                money_of_change_pay = #{moneyOfChangePay},
+            </if>
+            <if test="payKickback!=null">
+                pay_kickback = #{payKickback},
+            </if>
+            <if test="payMode!=null">
+                pay_mode = #{payMode},
+            </if>
+            <if test="predeliveryDate!=null">
+                predelivery_date = #{predeliveryDate},
+            </if>
+            <if test="receiveGoodsAddr!=null">
+                receive_goods_addr = #{receiveGoodsAddr},
+            </if>
+            <if test="receiveGoodsCustomer!=null">
+                receive_goods_customer = #{receiveGoodsCustomer},
+            </if>
+            <if test="receiveGoodsCustomerAddr!=null">
+                receive_goods_customer_addr = #{receiveGoodsCustomerAddr},
+            </if>
+            <if test="receiveGoodsCustomerCode!=null">
+                receive_goods_customer_code = #{receiveGoodsCustomerCode},
+            </if>
+            <if test="receiveGoodsCustomerTel!=null">
+                receive_goods_customer_tel = #{receiveGoodsCustomerTel},
+            </if>
+            <if test="reduceFund!=null">
+                reduce_fund = #{reduceFund},
+            </if>
+            <if test="remark!=null">
+                remark = #{remark},
+            </if>
+            <if test="sendGoodsAddr!=null">
+                send_goods_addr = #{sendGoodsAddr},
+            </if>
+            <if test="sendGoodsCustomer!=null">
+                send_goods_customer = #{sendGoodsCustomer},
+            </if>
+            <if test="sendGoodsCustomerAddr!=null">
+                send_goods_customer_addr = #{sendGoodsCustomerAddr},
+            </if>
+            <if test="sendGoodsCustomerNo!=null">
+                send_goods_customer_no = #{sendGoodsCustomerNo},
+            </if>
+            <if test="sendGoodsCustomerTel!=null">
+                send_goods_customer_tel = #{sendGoodsCustomerTel},
+            </if>
+            <if test="sendGoodsDate!=null">
+                send_goods_date = #{sendGoodsDate},
+            </if>
+            <if test="transferFee!=null">
+                transfer_fee = #{transferFee},
+            </if>
+            <if test="transferStation!=null">
+                transfer_station = #{transferStation},
+            </if>
+            <if test="validity!=null">
+                validity = #{validity},
+            </if>
+            <if test="writeBillPerson!=null">
+                write_bill_person = #{writeBillPerson},
+            </if>
+            <if test="writeDate!=null">
+                write_date = #{writeDate}
+            </if>
+        </set>
+        where goods_bill_code=#{goodsBillCode};
+    </update>
+
+    <select id="findGoodsBillByCode" parameterType="String" resultType="Goodsbill" >
+        select * from goodsbill where goods_bill_code =#{goodsBillCode}
+    </select>
+
+    <select id="findCargoreceiptdetailByCode" parameterType="string" resultType="Cargoreceiptdetail" >
+        select * from cargoreceiptdetail where goods_revert_bill_id =#{goodsRevertBillId}
+    </select>
+
+    <select id="findGoodsBillByEvent" parameterType="string" resultType="Goodsbillevent" >
+        select * from goodsbillevent
+        <where>
+            <if test="eventName != null">
+                event_name =#{eventName}
+            </if>
+        </where>
+    </select>
+
+    <select id="findGoodsBillByEventByGoodsBillCode" parameterType="string" resultType="Goodsbillevent">
+        select * from goodsbillevent where goods_bill_id = #{goodsBillCode}
+    </select>
+
+
+    <select id="findAllGoodsBillByEvent"  resultType="Goodsbillevent" >
+        select * from goodsbillevent
+    </select>
+
+    <select id="findAllGoodsBill" resultType="Goodsbill" >
+        select * from goodsbill
+    </select>
+
+    <select id="findOnWayBills" resultType="com.itqf.entity.Goodsbill">
+        SELECT * FROM goodsbill WHERE goods_bill_code IN
+        (SELECT goods_bill_id FROM goodsbillevent WHERE event_name = '未到')
+        AND transfer_station IS NOT NULL
+    </select>
+
+    <select id="selectGoodsBill" parameterType="com.itqf.entity.Cargoreceipt" resultType="com.itqf.entity.Goodsbill">
+        select * from goodsbill where goods_bill_code in
+        (select goods_bill_detail_id from cargoreceiptdetail d inner join
+        cargoreceipt c where d.goods_revert_bill_id = c.goods_revert_bill_code and
+        c.back_bill_state = #{backBillState} and c.driver_id = #{driverId})
+    </select>
+
+</mapper>

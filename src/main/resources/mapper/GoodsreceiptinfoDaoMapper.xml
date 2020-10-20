@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.itqf.dao.GoodsreceiptinfoDao">
+
+    <insert id="insertGoodsReceiptInfo" parameterType="Goodsreceiptinfo">
+        insert into goodsreceiptinfo (
+        <trim suffixOverrides=",">
+            <if test="id!=null">id,</if>
+            <if test="checkGoodsRecord!=null">check_goods_record,</if>
+            <if test="driverName!=null">driver_name,</if>
+            <if test="goodsRevertCode!=null">goods_revert_code,</if>
+            <if test="rceiveGoodsDate!=null">rceive_goods_date,</if>
+            <if test="receiveGoodsPerson!=null">receive_goods_person,</if>
+        </trim>
+        ) values (
+        <trim suffixOverrides=",">
+            <if test="id!=null">id,</if>
+            <if test="checkGoodsRecord!=null">checkGoodsRecord,</if>
+            <if test="driverName!=null">driverName,</if>
+            <if test="goodsRevertCode!=null">goodsRevertCode,</if>
+            <if test="rceiveGoodsDate!=null">rceiveGoodsDate,</if>
+            <if test="receiveGoodsPerson!=null">receiveGoodsPerson,</if>
+        </trim>
+        );
+    </insert>
+
+</mapper>

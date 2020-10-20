@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.itqf.dao.UserDao">
+
+    <insert id="addUserGroup" parameterType="Usergroup">
+        insert into usergroup ( description , group_name) value (#{description},#{groupName})
+    </insert>
+
+    <insert id="insertUser" parameterType="user">
+        insert into user
+        ( login_id , password)
+        value
+        (#{loginId},#{password})
+    </insert>
+    <insert id="insertUserwithgroup" parameterType="userwithgroup">
+        insert into userwithgroup
+         ( group_id , user_id)
+         value
+          (#{groupId},#{userId})
+    </insert>
+
+    <delete id="deleteUserGroup" parameterType="int" >
+        delete from usergroup where id = #{id}
+    </delete>
+
+    <update id="updateUserPassword" parameterType="user">
+        update user set password = #{password} where login_id = #{loginId}
+    </update>
+
+    <update id="updateUserGroupDe" parameterType="usergroup" >
+        update usergroup set description = #{description} where id = #{id}
+    </update>
+
+    <select id="findUser" parameterType="string" resultType="user" >
+        select login_id loginId, if_online ifOnline , password from user where login_id = #{loginId};
+    </select>
+
+    <select id="findAllUserGroup" resultType="UserGroup">
+        select * from usergroup
+    </select>
+
+    <select id="findUserGroup" parameterType="int" resultType="UserGroup">
+        select * from usergroup where id = #{id}
+    </select>
+
+    <select id="findUserGroupByGroupName" parameterType="String" resultType="Usergroup" >
+        select * from usergroup where group_name = #{groupName}
+    </select>
+
+    <select id="judgeUserGroupUse" parameterType="int" resultType="int">
+        select count(1) from userwithgroup where group_id = #{id};
+    </select>
+    <select id="judgeUserGroupName" parameterType="string" resultType="int">
+        select count(1) from usergroup where group_name =#{groupName};
+    </select>
+</mapper>

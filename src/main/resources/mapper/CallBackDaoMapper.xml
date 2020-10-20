@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.itqf.dao.CallbackDao">
+
+
+
+    <select id="findByGoodsBillIdAndType" parameterType="com.itqf.entity.Callbackinfo" resultType="com.itqf.entity.Callbackinfo">
+        select * from callbackinfo where goods_bill_id = #{goodsBillId} and bill_type = #{billType}
+    </select>
+
+
+</mapper>

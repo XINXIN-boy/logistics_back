@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.itqf.dao.CustomerDao">
+
+
+    <insert id="insertCustomer" parameterType="Customerinfo" >
+        insert into customerinfo (customer_code ,address,customer,customer_type,email,enterprise_property, enterprise_size,fax, linkman,linkman_mobile,phone, post_code)
+        value ( #{customerCode},#{address},#{customer},#{customerType},#{email},
+            #{enterpriseProperty},#{enterpriseSize},#{fax},#{linkman},#{linkmanMobile},
+            #{phone},#{postCode})
+    </insert>
+
+    <insert id="insertCustomerReceiptInfo" parameterType="Customerreceiptinfo">
+
+    </insert>
+
+    <select id="findAll" resultType="Customerinfo" >
+        select * from customerinfo
+    </select>
+
+    <select id="findCustomerByCode" resultType="Customerinfo" parameterType="string" >
+        select * from customerinfo where customer_code = #{customerCode}
+    </select>
+
+    <delete id="deleteCustomer" parameterType="string">
+        delete from customerinfo where customer_code = #{customerCode}
+    </delete>
+
+    <update id="updateCustomerInfo" parameterType="Customerinfo" >
+        update customerinfo set
+        address = #{address},
+        customer =#{customer},
+        customer_type =#{customerType},
+        email =#{email},
+        enterprise_property =#{enterpriseProperty},
+        enterprise_size =#{enterpriseSize},
+        fax=#{fax},
+        linkman=#{linkman},
+        linkman_mobile=#{linkmanMobile},
+        phone= #{phone},post_code=#{postCode}
+        where customer_code = #{customerCode}
+    </update>
+
+
+</mapper>

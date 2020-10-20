@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.itqf.dao.CargoreceiptDao">
+
+    <insert id="insertCargoreceipt" parameterType="Cargoreceipt">
+        insert into cargoreceipt (
+        <trim suffixOverrides=",">
+            <if test="goodsRevertBillCode!=null">goods_revert_bill_code,</if>
+            <if test="acceptStation!=null">accept_station,</if>
+            <if test="allCarriage!=null">all_carriage,</if>
+            <if test="arriveTime!=null">arrive_time,</if>
+            <if test="backBillState!=null">back_bill_state,</if>
+            <if test="carriageBanlanceMode!=null">carriage_banlance_mode,</if>
+            <if test="carriageMode!=null">carriage_mode,</if>
+            <if test="carryGoodsBillDeposit!=null">carry_goods_bill_deposit,</if>
+            <if test="carryGoodsInsurance!=null">carry_goods_insurance,</if>
+            <if test="dealGoodsStation!=null">deal_goods_station,</if>
+            <if test="dispatchServiceFee!=null">dispatch_service_fee,</if>
+            <if test="driverId!=null">driver_id,</if>
+            <if test="ifBalance!=null">if_balance,</if>
+            <if test="insurance!=null">insurance,</if>
+            <if test="linkmanPhone!=null">linkman_phone,</if>
+            <if test="loadStation!=null">load_station,</if>
+            <if test="receiveGoodsDetailAddr!=null">receive_goods_detail_addr,</if>
+            <if test="receiveGoodsLinkman!=null">receive_goods_linkman,</if>
+            <if test="remark!=null">remark,</if>
+            <if test="signTime!=null">sign_time,</if>
+            <if test="startAdvance!=null">start_advance,</if>
+            <if test="startCarryTime!=null">start_carry_time,</if>
+        </trim>
+        ) values (
+        <trim suffixOverrides=",">
+            <if test="goodsRevertBillCode!=null">#{goodsRevertBillCode},</if>
+            <if test="acceptStation!=null">#{acceptStation},</if>
+            <if test="allCarriage!=null">#{allCarriage},</if>
+            <if test="arriveTime!=null">#{arriveTime},</if>
+            <if test="backBillState!=null">#{backBillState},</if>
+            <if test="carriageBanlanceMode!=null">#{carriageBanlanceMode},</if>
+            <if test="carriageMode!=null">#{carriageMode},</if>
+            <if test="carryGoodsBillDeposit!=null">#{carryGoodsBillDeposit},</if>
+            <if test="carryGoodsInsurance!=null">#{carryGoodsInsurance},</if>
+            <if test="dealGoodsStation!=null">#{dealGoodsStation},</if>
+            <if test="dispatchServiceFee!=null">#{dispatchServiceFee},</if>
+            <if test="driverId!=null">#{driverId},</if>
+            <if test="ifBalance!=null">#{ifBalance},</if>
+            <if test="insurance!=null">#{insurance},</if>
+            <if test="linkmanPhone!=null">#{linkmanPhone},</if>
+            <if test="loadStation!=null">#{loadStation},</if>
+            <if test="receiveGoodsDetailAddr!=null">#{receiveGoodsDetailAddr},</if>
+            <if test="receiveGoodsLinkman!=null">#{receiveGoodsLinkman},</if>
+            <if test="remark!=null">#{remark},</if>
+            <if test="signTime!=null">#{signTime},</if>
+            <if test="startAdvance!=null">#{startAdvance},</if>
+            <if test="startCarryTime!=null">#{startCarryTime},</if>
+        </trim>
+        );
+    </insert>
+
+
+    <update id="updateRelease" parameterType="Cargoreceipt" >
+        update cargoreceipt
+        <set>
+            <if test="acceptStation!=null">
+                accept_station = #{acceptStation},
+            </if>
+            <if test="allCarriage!=null">
+                all_carriage = #{allCarriage},
+            </if>
+            <if test="arriveTime!=null">
+                arrive_time = #{arriveTime},
+            </if>
+            <if test="backBillState!=null">
+                back_bill_state = #{backBillState},
+            </if>
+            <if test="carriageBanlanceMode!=null">
+                carriage_banlance_mode = #{carriageBanlanceMode},
+            </if>
+            <if test="carriageMode!=null">
+                carriage_mode = #{carriageMode},
+            </if>
+            <if test="carryGoodsBillDeposit!=null">
+                carry_goods_bill_deposit = #{carryGoodsBillDeposit},
+            </if>
+            <if test="carryGoodsInsurance!=null">
+                carry_goods_insurance = #{carryGoodsInsurance},
+            </if>
+            <if test="dealGoodsStation!=null">
+                deal_goods_station = #{dealGoodsStation},
+            </if>
+            <if test="dispatchServiceFee!=null">
+                dispatch_service_fee = #{dispatchServiceFee},
+            </if>
+            <if test="driverId!=null">
+                driver_id = #{driverId},
+            </if>
+            <if test="ifBalance!=null">
+                if_balance = #{ifBalance},
+            </if>
+            <if test="insurance!=null">
+                insurance = #{insurance},
+            </if>
+            <if test="linkmanPhone!=null">
+                linkman_phone = #{linkmanPhone},
+            </if>
+            <if test="loadStation!=null">
+                load_station = #{loadStation},
+            </if>
+            <if test="receiveGoodsDetailAddr!=null">
+                receive_goods_detail_addr = #{receiveGoodsDetailAddr},
+            </if>
+            <if test="receiveGoodsLinkman!=null">
+                receive_goods_linkman = #{receiveGoodsLinkman},
+            </if>
+            <if test="remark!=null">
+                remark = #{remark},
+            </if>
+            <if test="signTime!=null">
+                sign_time = #{signTime},
+            </if>
+            <if test="startAdvance!=null">
+                start_advance = #{startAdvance},
+            </if>
+            <if test="startCarryTime!=null">
+                start_carry_time = #{startCarryTime},
+            </if>
+        </set>
+        where goods_revert_bill_code=#{goodsRevertBillCode};
+    </update>
+
+
+    <select id="findByGoodsBillDetailId" parameterType="string" resultType="Cargoreceiptdetail" >
+        select * from cargoreceiptdetail
+        where  goods_bill_detail_id = #{billCode} ;
+    </select>
+    <select id="findByGoodsRevertBillId" parameterType="string" resultType="Cargoreceiptdetail" >
+        select * from cargoreceiptdetail
+        where  goods_revert_bill_id = #{goodsRevertBillId} ;
+    </select>
+    <select id="findAllCargoreceipt" resultType="Cargoreceipt">
+        select * from cargoreceipt
+   </select>
+    <select id="findAllCargoreceiptdetail" resultType="Cargoreceiptdetail">
+        select * from cargoreceiptdetail
+   </select>
+
+    <select id="findCargoreceiptByCode" resultType="Goodsbill">
+        select gb.* from cargoreceiptdetail cgd
+        join goodsbill gb
+        on cgd.goods_bill_detail_id = gb.goods_bill_code
+        where cgd.goods_revert_bill_id =#{goodsRevertBillCode}
+   </select>
+
+    <select id="findAllCargoreceiptByEvent" parameterType="string" resultType="Cargoreceipt">
+        select * from cargoreceipt
+        <where>
+            <if test="backBillState!=null" >
+                back_bill_state = #{backBillState}
+            </if>
+        </where>
+    </select>
+
+    <select id="findCargoReceiptBygoodsRevertBillCode" parameterType="string" resultType="Cargoreceipt" >
+        select * from cargoreceipt where goods_revert_bill_code = #{goodsRevertBillCode}
+    </select>
+
+    <select id="findAllCargoreceiptByDriverId" parameterType="string" resultType="Cargoreceipt" >
+        select * from cargoreceipt where driver_id = #{driverId}
+    </select>
+    <select id="findAllCargoreceiptByDriverIdAndBackBillState" parameterType="map" resultType="Cargoreceipt" >
+        select * from cargoreceipt where driver_id = #{driverId} and back_bill_state =#{backBillState}
+    </select>
+
+</mapper>

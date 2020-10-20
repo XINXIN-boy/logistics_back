@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.itqf.dao.TransferDao">
+    <insert id="addTransferinfo" parameterType="com.itqf.entity.Transferinfo">
+        insert into transferinfo (
+        <trim suffixOverrides=",">
+            <if test="id!=null">id,</if>
+            <if test="afterTransferBill!=null">after_transfer_bill,</if>
+            <if test="checkTime!=null">check_time,</if>
+            <if test="description!=null">description,</if>
+            <if test="goodsBillCode!=null">goods_bill_code,</if>
+            <if test="transferAddr!=null">transfer_addr,</if>
+            <if test="transferCheck!=null">transfer_check,</if>
+            <if test="transferCompany!=null">transfer_company,</if>
+            <if test="transferFee!=null">transfer_fee,</if>
+            <if test="transferStation!=null">transfer_station,</if>
+            <if test="transferStationTel!=null">transfer_station_tel,</if>
+        </trim>
+        ) values (
+        <trim suffixOverrides=",">
+            <if test="id!=null">#{id},</if>
+            <if test="afterTransferBill!=null">#{afterTransferBill},</if>
+            <if test="checkTime!=null">#{checkTime},</if>
+            <if test="description!=null">#{description},</if>
+            <if test="goodsBillCode!=null">#{goodsBillCode},</if>
+            <if test="transferAddr!=null">#{transferAddr},</if>
+            <if test="transferCheck!=null">#{transferCheck},</if>
+            <if test="transferCompany!=null">#{transferCompany},</if>
+            <if test="transferFee!=null">#{transferFee},</if>
+            <if test="transferStation!=null">#{transferStation},</if>
+            <if test="transferStationTel!=null">#{transferStationTel},</if>
+        </trim>
+        );
+    </insert>
+
+    <select id="findInfoByPage" resultType="com.itqf.entity.Transferinfo">
+        select * from transferinfo
+    </select>
+
+
+</mapper>
